@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Lookup</title>
+</head>
+<body>
+
+<h2>Employee Lookup</h2>
+
+<input id="employeeId" placeholder="Enter Employee ID">
+
+<button onclick="searchEmployee()">
+Search
+</button>
+
+<pre id="result"></pre>
+
+<script>
+
+async function searchEmployee() {
+
+  const id =
+    document.getElementById("employeeId").value;
+
+  const url =
+    "YOUR_WEBAPP_URL?employeeId=" +
+    encodeURIComponent(id);
+
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  document.getElementById("result").textContent =
+    JSON.stringify(data, null, 2);
+
+}
+
+</script>
+
+</body>
+</html>
